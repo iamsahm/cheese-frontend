@@ -12,18 +12,12 @@ import {
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          It ain't easy being cheesey 
-        </p>
-      </header>
+
       <Routes>
           <Route path='/'  element={<RandomCheese navigate={ useNavigate() }/>}/>
           <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>
           <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
         </Routes>
-    </div>
   );
 }
 
