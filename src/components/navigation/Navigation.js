@@ -16,10 +16,11 @@ const handleClick = () => {
 
 const NavigationBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
+
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
+    const open = Boolean(anchorEl);
     const handleMenuClose = () => {
         setAnchorEl(null);
     };
@@ -27,20 +28,26 @@ const NavigationBar = () => {
     return (
         <AppBar position="static">
             <Container>
-                <Toolbar>
+                <Toolbar
+                    style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                    }}
+                >
                     <Link data-cy="home" to="/">
-                        <strong>Brielievers</strong>
+                        <h1>Brielievers</h1>
                     </Link>
                     <nav>
-                        <NavLink data-cy="signin" to="/login">
-                            Sign In
-                        </NavLink>
                         <Button
-                            aria-controls="cheese-menu"
+                            color="inherit"
+                            id="basic-button"
+                            aria-controls={open ? "basic-menu" : undefined}
                             aria-haspopup="true"
+                            aria-expanded={open ? "true" : undefined}
                             onClick={handleMenuOpen}
                         >
-                            Cheese Types
+                            Select Cheese Type
                         </Button>
                         <Menu
                             data-cy="cheese-menu"
@@ -50,12 +57,6 @@ const NavigationBar = () => {
                             open={Boolean(anchorEl)}
                             onClose={handleMenuClose}
                         >
-                            <MenuItem
-                                data-cy="default-cheese-type"
-                                onClick={handleMenuClose}
-                            >
-                                Select Cheese Type
-                            </MenuItem>
                             {cheeseTypes.map((cheeseType) => (
                                 <MenuItem
                                     key={cheeseType}
@@ -65,6 +66,9 @@ const NavigationBar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
+                        <NavLink data-cy="signin" to="/login" color="inherit">
+                            Sign In
+                        </NavLink>
                         <Link data-cy="logout" to="/" onClick={handleClick}>
                             Logout
                         </Link>
