@@ -62,7 +62,12 @@ const NavigationBar = () => {
                                     key={cheeseType}
                                     onClick={handleMenuClose}
                                 >
-                                    {cheeseType}
+                                    <Link
+                                        to={`/cheeses/${cheeseType}`}
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        {cheeseType}
+                                    </Link>
                                 </MenuItem>
                             ))}
                         </Menu>

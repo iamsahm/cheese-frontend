@@ -11,61 +11,7 @@ const theme = createTheme({
         primary: {
             main: "#fad02d",
         },
-        secondary: {
-            main: "#3f51b5",
-        },
-        text: {
-            primary: "#000000",
-            secondary: "#ffffff",
-        },
-        link: "#000000",
     },
-    typography: {
-        fontFamily: [
-            "-apple-system",
-            "BlinkMacSystemFont",
-            '"Segoe UI"',
-            "Roboto",
-            '"Helvetica Neue"',
-            "Arial",
-            "sans-serif",
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(","),
-        h1: {
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            color: "#333",
-            font: "Arial",
-        },
-        h2: {
-            fontSize: "2rem",
-            fontWeight: "bold",
-            color: "#444",
-        },
-        h3: {
-            fontSize: "1.75rem",
-            fontWeight: "bold",
-            color: "#555",
-        },
-        button: {
-            color: "#551a8b",
-        },
-    },
-    overrides: {
-        MuiButton: {
-            hidden: false,
-            root: {
-                borderRadius: "8px",
-                textTransform: "none", // Prevent uppercase transformation
-            },
-            containedPrimary: {
-                color: "white",
-            },
-        },
-    },
-    spacing: 8, // Adjust spacing between components globally
 });
 
 function App() {
