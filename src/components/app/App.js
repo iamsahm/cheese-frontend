@@ -21,7 +21,26 @@ const themeOptions = createTheme({
       main: '#f50057',
       },
   },
+  typography: {
+    h1: {
+      fontSize: '50px',
+    },
+    h2: {
+      fontSize: '18px',
+      fontWeight: '600',
+    },
+    randomCheeseFields: {
+      fontSize: '18px',
+      fontWeight: '400'
+    }
+  }
 });
+
+themeOptions.typography.h1 = {
+  fontSize: '50px',
+  // fontWeight: 'bold',
+};
+
 
 // const theme = {
 //   fg: '#FFAB00',
