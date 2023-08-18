@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import TextField from '@mui/material/TextField'; 
+import StyledButton from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {themeOptions} from '../randomCheese/RandomCheese';
+
+
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -35,13 +41,39 @@ const LogInForm = ({ navigate }) => {
   }
 
 
-    return (
+    return ( 
+      <ThemeProvider theme={themeOptions}>
       <form onSubmit={handleSubmit}>
-        <input placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
-        <input placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
-        <input role='submit-button' id='submit' type="submit" value="Submit" />
-      </form>
+      <TextField
+        label="Email"
+        id="email"
+        type="text"
+        autoComplete="email"
+        autoFocus
+        value={email}
+        onChange={handleEmailChange}
+      />
+      <TextField
+        label="Password"
+        id="password"
+        type="password"
+        value={password}
+        onChange={handlePasswordChange}
+      />
+      <StyledButton
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+      >
+        Sign In
+      </StyledButton>
+    </form>
+      </ThemeProvider>
     );
 }
 
 export default LogInForm;
+
+
+
