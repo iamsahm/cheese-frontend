@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -11,45 +10,12 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { styled } from '@mui/system';
 import { useNavigate } from 'react-router-dom'; 
 import LogInForm from './/../auth/LoginForm';
+import { styled } from '@mui/system';
+import Button from '@mui/material/Button';
 
 
-export const themeOptions = createTheme({
-        palette: {
-            mode: 'light',
-            primary: {
-            main: '#ffab00',
-            contrastText: '#ff6f00',
-            },
-            secondary: {
-            main: '#f50057',
-            },
-        },
-    });
-
-export const theme = {
-        fg: '#FFAB00',
-        bg: 'white',
-        };
-
-export const invertTheme = ({ fg, bg }) => ({
-        fg: bg,
-        bg: fg,
-        });    
-
-export const StyledButton = styled(Button)`
-    color: ${(props) => props.theme.fg};
-    border: 2px solid ${(props) => props.theme.fg};
-    background: ${(props) => props.theme.bg};
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border-radius: 5px;
-    `;
-    
     const RandomCheese = () => {
         const [cheese, setCheese] = useState([]);
         const navigate = useNavigate(); 
@@ -64,6 +30,15 @@ export const StyledButton = styled(Button)`
 
         const link = cheese.image;
 
+        const StyledButton = styled(Button)`
+        color: ${(props) => props.theme.fg};
+        border: 2px solid ${(props) => props.theme.fg};
+        background: ${(props) => props.theme.bg};
+        font-size: 1em;
+        margin: 1em;
+        padding: 0.25em 1em;
+        border-radius: 5px;
+        `;
 
 
         const handleSubmit = (event) => {
@@ -78,7 +53,6 @@ export const StyledButton = styled(Button)`
 
 
         return (
-            <ThemeProvider theme={themeOptions}>
             <Grid container component="main" sx={{ height: '100vh' }}>
             {/* Left side: Login box */}
             <Grid item xs={12} sm={10} md={5} component={Paper} elevation={6} square>
@@ -186,7 +160,6 @@ export const StyledButton = styled(Button)`
                 </Box>
             </Grid>
         </Grid>
-        </ThemeProvider>
 
         )}
 

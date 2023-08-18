@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField'; 
 import StyledButton from '@mui/material/Button';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {themeOptions} from '../randomCheese/RandomCheese';
-
 
 
 const LogInForm = ({ navigate }) => {
@@ -42,7 +39,6 @@ const LogInForm = ({ navigate }) => {
 
 
     return ( 
-      <ThemeProvider theme={themeOptions}>
       <form onSubmit={handleSubmit}>
       <TextField
         label="Email"
@@ -69,7 +65,6 @@ const LogInForm = ({ navigate }) => {
         Sign In
       </StyledButton>
     </form>
-      </ThemeProvider>
     );
 }
 
