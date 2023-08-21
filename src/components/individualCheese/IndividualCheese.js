@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import RatingComponent from "../rating/Rating";
+import MakeRating from "../makeRating/MakeRating";
+import {Container} from '@mui/material'
 
 const IndividualCheeseComponent = () => {
     const [cheese, setCheese] = useState({});
@@ -20,7 +23,7 @@ const IndividualCheeseComponent = () => {
     }
 
     return (
-        <article>
+        <Container sx={{marginTop: 5}}>
             <img src={cheese.image} alt={cheese.name} />
             <h1>{cheese.name}</h1>
             <p>{cheese.description}</p>
@@ -32,8 +35,9 @@ const IndividualCheeseComponent = () => {
             <p>Countries: {cheese.countries}</p>
             <p>Milks: {cheese.milks}</p>
             <p>Vegetarian: {cheese.vegetarian}</p>
-            {/* <RatingComponent id={id}/> */}
-        </article>
+            <RatingComponent cheeseId={id}/>
+        </Container>
+
     );
 };
 
