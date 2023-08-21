@@ -1,11 +1,17 @@
-import "./App.css";
-import RandomCheese from "../randomCheese/RandomCheese";
-import LoginForm from "../auth/LoginForm";
-import SignUpForm from "../user/SignUpForm";
+
+import './App.css';
+import {RandomCheese} from '../randomCheese/RandomCheese'
+import LoginForm from '../auth/LoginForm'
+import SignUpForm from '../user/SignUpForm'
 import NavigationBar from "../navigation/Navigation";
 import IndividualCheese from "../individualCheese/IndividualCheese";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useNavigate, Routes, Route } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import {
+  useNavigate,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 const theme = createTheme({
     palette: {
@@ -14,6 +20,39 @@ const theme = createTheme({
         },
     },
 });
+
+
+const themeOptions = createTheme({
+  palette: {
+      mode: 'light',
+      primary: {
+      main: '#ffab00',
+      contrastText: '#ff6f00',
+      },
+      secondary: {
+      main: '#f50057',
+      },
+  },
+  typography: {
+    h1: {
+      fontSize: '50px',
+    },
+    h2: {
+      fontSize: '18px',
+      fontWeight: '600',
+    },
+    randomCheeseFields: {
+      fontSize: '18px',
+      fontWeight: '400'
+    }
+  }
+});
+
+themeOptions.typography.h1 = {
+  fontSize: '50px',
+};
+
+
 
 function App() {
     return (
