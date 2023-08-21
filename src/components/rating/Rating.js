@@ -16,7 +16,6 @@ const RatingComponent = ({cheeseId}) => {
             } else if (response.status === 200) {
                 const data = await response.json()
                 setMeanRating(data.meanRating)
-                console.log(data.meanRating)
                 
             } else {
                 console.error("Error fetching rating")
@@ -34,8 +33,6 @@ const RatingComponent = ({cheeseId}) => {
     const handleAddRating = () => {
         fetchMeanRating()
     }
-    
-    console.log("mean rating", meanRating)
     return ( 
         <Box sx ={{ alignItems : 'left'}}>
         <Typography>Average rating: {meanRating}</Typography>
