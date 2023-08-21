@@ -2,7 +2,7 @@ import IndividualCheeseComponent from "./IndividualCheese";
 import { MemoryRouter, Routes, Route } from "react-router";
 
 describe("Individual cheese component", () => {
-    it("displays the cheese details for the given cheese id", () => {
+    beforeEach(() => {
         cy.intercept("GET", "/api/cheeses/1", {
             statusCode: 200,
             body: {
@@ -20,7 +20,9 @@ describe("Individual cheese component", () => {
                 image: "https://i.imgur.com/0x1XH4k.jpeg",
             },
         }).as("getCheese");
+    });
 
+    it("displays the cheese details for the given cheese id", () => {
         cy.mount(
             <MemoryRouter initialEntries={["/cheeses/1"]}>
                 <Routes>
@@ -32,17 +34,19 @@ describe("Individual cheese component", () => {
             </MemoryRouter>
         );
 
-        // make sure the component is rendered with the correct props
-        // check that the component makes a call to the correct endpoint
-        // check that the component makes a call with the correct method
-        // check that the component makes a call with the correct headers
-        // check that the component makes a call with the correct body
-        // check that the component makes a call with the correct query string
-        // check that the component makes a call with the correct url
-        // check that the component makes a call with the correct status code
-        // check that the component makes a call with the correct response body
         cy.get("h1").should("contain", "Cheddar");
     });
+    it("displays a 404 if the id doesn't exist", () => {
+        cy.mount(
+            <MemoryRouter initialEntries={["/cheeses/2"]}>
+                <Routes>
+                    <Route
+                        path="/cheeses/:id"
+                        element={<IndividualCheeseComponent />}
+                    />
+                </Routes>
+            </MemoryRouter>
+        );
+        cy.get("h1").should("contain", "404 error, cheese not found! ");
+    });
 });
-
-// check that the component displays the correct cheese details

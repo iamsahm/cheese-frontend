@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 const IndividualCheeseComponent = () => {
     const [cheese, setCheese] = useState({});
-    const cheeseId = window.location.pathname.split("/")[2];
+    const { id } = useParams();
 
     useEffect(() => {
         const fetchCheese = async () => {
-            const response = await fetch(`/api/cheeses/${cheeseId}`);
+            const response = await fetch(`/api/cheeses/${id}`);
             const data = await response.json();
             console.log(data);
             setCheese(data);
         };
         fetchCheese();
-    }, [cheeseId]);
+    }, [id]);
+
+    if (!cheese.name) {
+        return <h1>404 error, cheese not found! </h1>;
+    }
 
     return (
         <article>
@@ -27,7 +32,7 @@ const IndividualCheeseComponent = () => {
             <p>Countries: {cheese.countries}</p>
             <p>Milks: {cheese.milks}</p>
             <p>Vegetarian: {cheese.vegetarian}</p>
-            {/* <RatingComponent cheeseId={cheeseId}/> */}
+            {/* <RatingComponent id={id}/> */}
         </article>
     );
 };
