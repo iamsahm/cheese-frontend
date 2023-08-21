@@ -5,7 +5,6 @@ import { useParams } from "react-router";
 const CheeseList = () => {
     let { type } = useParams();
     console.log("cheeseType", type);
-    // let cheeseType = cheeseTypeUnclean.toLowerCase();
     const [cheeses, setCheeses] = useState([]);
 
     useEffect(() => {
@@ -22,7 +21,7 @@ const CheeseList = () => {
     return (
         <div>
             {cheeses.map((cheese) => (
-                <CheeseListItem key={cheese.indexOf()} cheese={cheese} />
+                <CheeseListItem key={cheese.id} cheese={cheese} />
             ))}
         </div>
     );
