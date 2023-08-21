@@ -26,6 +26,7 @@ const RatingComponent = ({cheeseId}) => {
         }
         fetchMeanRating();
     }, [cheeseId])
+    
     return ( 
         <div>
         <Typography>Average rating: {meanRating}</Typography>
