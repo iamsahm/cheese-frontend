@@ -3,6 +3,7 @@ import RandomCheese from "../randomCheese/RandomCheese";
 import LoginForm from "../auth/LoginForm";
 import SignUpForm from "../user/SignUpForm";
 import NavigationBar from "../navigation/Navigation";
+import IndividualCheese from "../individualCheese/IndividualCheese";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useNavigate, Routes, Route } from "react-router-dom";
 
@@ -32,6 +33,7 @@ function App() {
                         path="/signup"
                         element={<SignUpForm navigate={useNavigate()} />}
                     />
+                    <Route path="/cheeses/:id" element={<IndividualCheese />} />
                 </Routes>
             </ThemeProvider>
         </div>
