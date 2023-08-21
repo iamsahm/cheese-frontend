@@ -19,7 +19,7 @@ const LogInForm = ({ navigate }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        let response = await fetch("/tokens", {
+        let response = await fetch("/api/tokens", {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
@@ -79,10 +79,10 @@ const LogInForm = ({ navigate }) => {
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
         <LockOutlinedIcon />
       </Avatar>
-      <Typography component="h1" variant="h5">
+      <Typography id="submit" component="h1" variant="h5">
         Sign in
       </Typography>
-      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+      <Box component="form" noValidate sx={{ mt: 1 }}>
         <TextField
           margin="normal"
           required
@@ -114,10 +114,12 @@ const LogInForm = ({ navigate }) => {
         label="Remember me"
       />
       <StyledButton
+        onClick={handleSubmit}
         type="submit"
         fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
+        data-cy="SignIn"
       >
         Sign In
       </StyledButton>

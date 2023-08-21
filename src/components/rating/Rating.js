@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
-import {Typography, Rating} from '@mui/material'
+import {Typography, Rating, Box} from '@mui/material'
+import MakeRating from '../makeRating/MakeRating'
 
 
 
@@ -7,9 +8,7 @@ const RatingComponent = ({cheeseId}) => {
     const [meanRating, setMeanRating] = useState()
     const [token, setToken] = useState(window.localStorage.getItem("token"))
     
-
-    useEffect(() => {
-        async function fetchMeanRating() {
+    async function fetchMeanRating() {
         try {
             const response = await fetch(`/api/ratings/${cheeseId}`);
             if (response.status === 404) {
@@ -17,6 +16,7 @@ const RatingComponent = ({cheeseId}) => {
             } else if (response.status === 200) {
                 const data = await response.json()
                 setMeanRating(data.meanRating)
+                
             } else {
                 console.error("Error fetching rating")
             }
@@ -24,14 +24,21 @@ const RatingComponent = ({cheeseId}) => {
                 console.error("Error fetching rating")
             }
         }
+
+    useEffect(() => {
         fetchMeanRating();
-    }, [cheeseId])
-    
+        }
+    , [cheeseId])
+
+    const handleAddRating = () => {
+        fetchMeanRating()
+    }
     return ( 
-        <div>
+        <Box sx ={{ alignItems : 'left'}}>
         <Typography>Average rating: {meanRating}</Typography>
-        <Rating name="mean-rating" value={meanRating} readOnly />
-        </div>
+        <Rating sx={{marginBottom: 1, marginTop: 1}} name="mean-rating" value={parseFloat(meanRating)} readOnly />
+        <MakeRating cheeseId={cheeseId} handleAddRating={handleAddRating}/>
+        </Box>
      );
 }
  
