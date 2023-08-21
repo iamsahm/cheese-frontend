@@ -63,7 +63,7 @@ const NavigationBar = () => {
                                     onClick={handleMenuClose}
                                 >
                                     <Link
-                                        to={`/cheeses/${cheeseType}`}
+                                        to={`/cheeses/type/${cheeseType.toLowerCase()}`}
                                         style={{ textDecoration: "none" }}
                                     >
                                         {cheeseType}

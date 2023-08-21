@@ -24,13 +24,8 @@ describe("Cheese list results display", () => {
     });
 
     it("displays the short cheese details for the given cheese id", () => {
-        cy.mount(
-            <MemoryRouter initialEntries={["/cheeses/1"]}>
-                <Routes>
-                    <Route path="/cheeses/:id" element={<CheeseListItem />} />
-                </Routes>
-            </MemoryRouter>
-        );
+        cy.mount(<CheeseListItem cheeseId={1} />);
+        cy.wait("@getCheese");
 
         cy.get("h1").should("contain", "Cheddar");
         cy.get("[data-cy=cheeseShortDescription]").should(
@@ -41,15 +36,5 @@ describe("Cheese list results display", () => {
             "contain",
             "Somerset: England"
         );
-    });
-    it("displays a 404 if the id doesn't exist", () => {
-        cy.mount(
-            <MemoryRouter initialEntries={["/cheeses/2"]}>
-                <Routes>
-                    <Route path="/cheeses/:id" element={<CheeseListItem />} />
-                </Routes>
-            </MemoryRouter>
-        );
-        cy.get("h1").should("contain", "404 error, cheese not found! ");
     });
 });

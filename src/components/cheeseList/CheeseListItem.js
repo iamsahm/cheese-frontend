@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
 
-const CheeseListItem = () => {
+const CheeseListItem = (cheeseId) => {
     const [cheese, setCheese] = useState({});
-    const { id } = useParams();
 
     useEffect(() => {
         const fetchCheese = async () => {
-            const response = await fetch(`/api/cheeses/${id}`);
+            const response = await fetch(`/api/cheeses/${cheeseId}`);
             const data = await response.json();
             console.log(data);
             setCheese(data);
         };
         fetchCheese();
-    }, [id]);
+    }, [cheeseId]);
 
     if (!cheese.name) {
         return <h1>404 error, cheese not found! </h1>;
