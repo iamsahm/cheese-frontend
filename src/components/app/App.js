@@ -50,19 +50,8 @@ const themeOptions = createTheme({
 
 themeOptions.typography.h1 = {
   fontSize: '50px',
-  // fontWeight: 'bold',
 };
 
-
-// const theme = {
-//   fg: '#FFAB00',
-//   bg: 'white',
-//   };
-
-// const invertTheme = ({ fg, bg }) => ({
-//   fg: bg,
-//   bg: fg,
-//   });    
 
 
 function App() {
