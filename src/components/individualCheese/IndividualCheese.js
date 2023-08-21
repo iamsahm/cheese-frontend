@@ -9,7 +9,6 @@ const IndividualCheeseComponent = () => {
         const fetchCheese = async () => {
             const response = await fetch(`/api/cheeses/${id}`);
             const data = await response.json();
-            console.log(data);
             setCheese(data);
         };
         fetchCheese();

@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from "react";
+import Card from "@mui/material/Card";
 
-const CheeseListItem = (cheeseId) => {
-    const [cheese, setCheese] = useState({});
-
-    useEffect(() => {
-        const fetchCheese = async () => {
-            const response = await fetch(`/api/cheeses/${cheeseId}`);
-            const data = await response.json();
-            console.log(data);
-            setCheese(data);
-        };
-        fetchCheese();
-    }, [cheeseId]);
-
+const CheeseListItem = (cheese) => {
     if (!cheese.name) {
         return <h1>404 error, cheese not found! </h1>;
     }
     cheese.shortDescription = cheese.description.slice(0, 100).concat("...");
 
     return (
-        <article>
+        <Card>
             <img
                 src={cheese.image}
                 alt={cheese.name}
@@ -31,7 +19,7 @@ const CheeseListItem = (cheeseId) => {
                 {cheese.region}: {cheese.countries}
             </p>
             {/* <RatingComponent id={id}/> */}
-        </article>
+        </Card>
     );
 };
 
