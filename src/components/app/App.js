@@ -1,7 +1,10 @@
+
 import './App.css';
 import {RandomCheese} from '../randomCheese/RandomCheese'
 import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../user/SignUpForm'
+import NavigationBar from "../navigation/Navigation";
+import IndividualCheese from "../individualCheese/IndividualCheese";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
@@ -9,6 +12,15 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#fad02d",
+        },
+    },
+});
+
 
 const themeOptions = createTheme({
   palette: {
@@ -54,16 +66,28 @@ themeOptions.typography.h1 = {
 
 
 function App() {
-  return (
-    <ThemeProvider theme = {themeOptions}>
-      <CssBaseline/>
-      <Routes>
-          <Route path='/'  element={<RandomCheese navigate={ useNavigate() }/>}/>
-          <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>
-          <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
-        </Routes>
-    </ThemeProvider>    
-  );
+    return (
+        <div>
+            <ThemeProvider theme={theme}>
+                <NavigationBar />
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<RandomCheese navigate={useNavigate()} />}
+                    />
+                    <Route
+                        path="/login"
+                        element={<LoginForm navigate={useNavigate()} />}
+                    />
+                    <Route
+                        path="/signup"
+                        element={<SignUpForm navigate={useNavigate()} />}
+                    />
+                    <Route path="/cheeses/:id" element={<IndividualCheese />} />
+                </Routes>
+            </ThemeProvider>
+        </div>
+    );
 }
 
 export default App;
