@@ -53,8 +53,8 @@ const LogInForm = ({ navigate }) => {
       <Grid
       item
       xs={false}
-      sm={12}
-      md={6}
+      sm={14}
+      md={14}
       sx={{
           display: 'block',
           flexDirection: 'column',
@@ -101,7 +101,6 @@ const LogInForm = ({ navigate }) => {
       <TextField
         margin="normal"
         required
-        fullWidth
         name="password"
         label="Password"
         type="password"
@@ -117,7 +116,6 @@ const LogInForm = ({ navigate }) => {
       <StyledButton
         onClick={handleSubmit}
         type="submit"
-        fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         data-cy="SignIn"
