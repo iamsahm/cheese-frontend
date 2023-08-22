@@ -1,9 +1,11 @@
 import {useState} from 'react'
-import {FormControl, InputLabel, Select, MenuItem, Button, Container, Box} from '@mui/material'
+import {FormControl, InputLabel, Select, MenuItem, Container, Box} from '@mui/material'
+import StyledButton from '../app/styledButton'
 
 const MakeRating = ({cheeseId, handleAddRating}) => {
     const [cheeseRating, setCheeseRating] = useState()
     const [token, setToken] = useState(window.localStorage.getItem("token"))
+    const [message, setMessage] = useState("")
 
     const handleRatingChange = (event) => {
         setCheeseRating(event.target.value)
@@ -21,10 +23,13 @@ const MakeRating = ({cheeseId, handleAddRating}) => {
                 body: JSON.stringify({cheeseRating})
             })
             if (response.status === 201) {
+                setMessage("Thanks for your rating!")
                 console.log("Rating added")
             } else if (response.status === 409) {
+                setMessage("You've already rated this cheese!")
                 console.log("Already rated")
             } else {
+                setMessage("Error, please try again")
                 console.error("Error adding rating")
             }
         } catch (error) {
@@ -38,7 +43,7 @@ const MakeRating = ({cheeseId, handleAddRating}) => {
     return (
         <Box>
             {token ? (
-                <Box sx={{ display: 'flex'}}>
+                <Box sx={{ display: 'block'}}>
                     <FormControl sx={{ m: 1, width: 300 }}>
                     <InputLabel id="rating-input" data-cy="rating-input">Choose a rating</InputLabel>
                     <Select
@@ -56,9 +61,12 @@ const MakeRating = ({cheeseId, handleAddRating}) => {
                     </Select>
                     </FormControl>
 
-                    <Button onClick={handleRatingSubmit}>
+                    <StyledButton onClick={handleRatingSubmit}>
                         Submit Rating
-                    </Button>
+                    </StyledButton>
+                    <p key={message}>
+                        {message}
+                    </p>
                 </Box>
             ): (
                 <p>
