@@ -66,6 +66,7 @@ const LogInForm = ({ navigate }) => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
       }}
+      style={{backgroundColor: '#ffffff'}}
       >
       <Box
           sx={{
@@ -123,7 +124,7 @@ const LogInForm = ({ navigate }) => {
       >
         Sign In
       </StyledButton>
-      <Grid container>
+      <Grid container style={{margin: '0 auto', width: '200px'}}>
         {/* Can add this link back in once forgot password logic written */}
         {/* <Grid item xs>
           <Link href="#" variant="body2">
