@@ -15,10 +15,10 @@ describe("Navigation bar", () => {
             .should("include", "/");
         cy.get("[data-cy=signin]")
             .should("contain", "Sign In")
-            .should("have.attr", "href", "/login");
+            .should("have.attr", "href", "/");
         cy.get("[data-cy=logout]")
             .should("contain", "Logout")
-            .should("not.have.attr", "href", "#undefined");
+            .should("not.have.attr", "href", "/");
         cy.get("[data-cy=cheese-menu]").should("contain", "Hard");
     });
 });
