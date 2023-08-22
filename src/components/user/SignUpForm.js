@@ -18,7 +18,7 @@ const SignUpForm = ({ navigate }) => {
     })
       .then(response => {
         if(response.status === 201) {
-          navigate('/login')
+          navigate('/')
         } else {
           navigate('/signup')
         }

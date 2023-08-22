@@ -9,6 +9,7 @@ import LogInForm from './/../auth/LoginForm';
 const RandomCheese = () => {
     const [cheese, setCheese] = useState([]);
     const navigate = useNavigate(); 
+    const [token, setToken] = useState(window.localStorage.getItem("token"))
     
     useEffect(() => {
         fetch("/api/cheeses/random")
@@ -22,16 +23,17 @@ const RandomCheese = () => {
     }, [])
     const link = cheese.image;
 
+
     return (
-        <Grid container component="main" sx={{ height: '100vh' }}>
+        <Grid style={{backgroundColor: "#fafafa"}} container component="main" sx={{ height: '100vh' }}>
             {/* Left side: Login box */}
-            <Grid item xs={12} sm={10} md={5} component={Paper} elevation={6} square>
+            <Grid style={{display: token ? "none" : "block", width: "100%", height: "100%"}} item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
                 <LogInForm navigate={navigate} />
             </Grid>    
         
             {/* Right side: Random Cheese image */}
-            <Grid item xs={false} sm={10} md={4} sx={{
-                marginLeft: '30px',
+            <Grid style = {{margin: token ? "0 auto" : "30px"}}item xs={false} sm={12} md={6} sx={{
+                minWidth: "50%"
             }}>
                 <Box
                     sx={{
@@ -40,8 +42,8 @@ const RandomCheese = () => {
                         alignItems: 'lower',
                         justifyContent: 'center'}}
                 >    
-                    <Typography variant="h1" style={{ fontSize: '50px' }}>Random Cheese</Typography>
-                    <img src={link} alt={cheese.name} style={{ width: '100%', maxWidth: '350px', height: '250px', margin: '15 0' }} />
+                    <Typography variant="h1" style={{ fontSize: '40px' }}>Random Cheese</Typography>
+                    <img src={link} alt={cheese.name} style={{ width: '100%', maxWidth: '250px', height: '200px', margin: '15 0' }} />
                     <Typography variant="h4">{cheese.name}</Typography>
                     <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Cheese Type: </Typography>
                     {/* this conditional checks if exists once, then if not does nothing, then is rechecked when useEffect is called/component is re-rendered*/}

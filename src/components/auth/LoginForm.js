@@ -29,13 +29,14 @@ const LogInForm = ({ navigate }) => {
 
         if (response.status !== 201) {
             console.log("yay");
-            navigate("/login");
+            navigate("/");
         } else {
             console.log("oop");
             let data = await response.json();
             window.localStorage.setItem("token", data.token);
             navigate("/");
         }
+        window.location.reload();
     };
 
     const handleEmailChange = (event) => {
@@ -52,10 +53,10 @@ const LogInForm = ({ navigate }) => {
       <Grid
       item
       xs={false}
-      sm={12}
-      md={6}
+      sm={14}
+      md={14}
       sx={{
-          display: 'flex',
+          display: 'block',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
@@ -100,7 +101,6 @@ const LogInForm = ({ navigate }) => {
       <TextField
         margin="normal"
         required
-        fullWidth
         name="password"
         label="Password"
         type="password"
@@ -116,10 +116,10 @@ const LogInForm = ({ navigate }) => {
       <StyledButton
         onClick={handleSubmit}
         type="submit"
-        fullWidth
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         data-cy="SignIn"
+        to="/"
       >
         Sign In
       </StyledButton>

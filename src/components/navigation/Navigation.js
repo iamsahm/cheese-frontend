@@ -1,5 +1,6 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import React from 'react';
+import {useState} from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,6 +8,8 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
+const currentURL = window.location.href;
+const targetPath = '/';
 const cheeseTypes = [
     "Hard",
     "Soft",
@@ -19,13 +22,19 @@ const cheeseTypes = [
     "Semi-Firm",
 ]; // update this with the actual types we can search for
 
+
 const handleClick = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("userId");
+
+    if (currentURL !== targetPath) {
+        window.location.reload();
+    }
 };
 
 const NavigationBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [token, setToken] = useState(window.localStorage.getItem("token"));
 
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -51,6 +60,7 @@ const NavigationBar = () => {
                     <nav>
                         <Button
                             color="inherit"
+                            style = {{backgroundColor: 'white', marginRight: "10px", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}
                             id="basic-button"
                             aria-controls={open ? "basic-menu" : undefined}
                             aria-haspopup="true"
@@ -81,10 +91,10 @@ const NavigationBar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
-                        <NavLink data-cy="signin" to="/login" color="inherit">
+                        <NavLink style={{display: token ?  "none" : "inline", marginRight: "10px"}} data-cy="signin" to="/" color="inherit">
                             Sign In
                         </NavLink>
-                        <Link data-cy="logout" to="/" onClick={handleClick}>
+                        <Link style ={{display: token ? "inline": "none"}}data-cy="logout" to="/" onClick={handleClick}>
                             Logout
                         </Link>
                     </nav>
