@@ -15,7 +15,7 @@ const RandomCheese = () => {
         .then((response) => {
             response.json()
             .then((data) => {
-                setCheese(data.data);
+                setCheese(data);
             } )
         })
         
