@@ -51,10 +51,10 @@ function App() {
                         path="/"
                         element={<RandomCheese navigate={useNavigate()} />}
                     />
-                    <Route
+                    {/* <Route
                         path="/login"
                         element={<LoginForm navigate={useNavigate()} />}
-                    />
+                    /> */}
                     <Route
                         path="/signup"
                         element={<SignUpForm navigate={useNavigate()} />}

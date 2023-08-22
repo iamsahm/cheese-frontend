@@ -36,6 +36,7 @@ const LogInForm = ({ navigate }) => {
             window.localStorage.setItem("token", data.token);
             navigate("/");
         }
+        window.location.reload();
     };
 
     const handleEmailChange = (event) => {
@@ -120,6 +121,7 @@ const LogInForm = ({ navigate }) => {
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         data-cy="SignIn"
+        to="/"
       >
         Sign In
       </StyledButton>

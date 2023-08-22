@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -8,10 +8,16 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 const cheeseTypes = ["Hard", "Soft", "Artisan"]; // update this with the actual types we can search for
+const currentURL = window.location.href
+const targetPath = '/'
 
 const handleClick = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("userId");
+
+    if (currentURL !== targetPath) {
+        window.location.reload();
+    }
 };
 
 const NavigationBar = () => {
@@ -71,7 +77,7 @@ const NavigationBar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
-                        <NavLink data-cy="signin" to="/login" color="inherit">
+                        <NavLink data-cy="signin" to="/" color="inherit">
                             Sign In
                         </NavLink>
                         <Link data-cy="logout" to="/" onClick={handleClick}>

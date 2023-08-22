@@ -9,6 +9,7 @@ import LogInForm from './/../auth/LoginForm';
 const RandomCheese = () => {
     const [cheese, setCheese] = useState([]);
     const navigate = useNavigate(); 
+    const [token, setToken] = useState(window.localStorage.getItem("token"))
     
     useEffect(() => {
         fetch("/api/cheeses/random")
@@ -22,15 +23,16 @@ const RandomCheese = () => {
     }, [])
     const link = cheese.image;
 
+
     return (
         <Grid container component="main" sx={{ height: '100vh' }}>
             {/* Left side: Login box */}
-            <Grid item xs={12} sm={10} md={5} component={Paper} elevation={6} square>
+            <Grid style={{display: token ? "none" : "block"}} item xs={12} sm={10} md={5} component={Paper} elevation={6} square>
                 <LogInForm navigate={navigate} />
             </Grid>    
         
             {/* Right side: Random Cheese image */}
-            <Grid item xs={false} sm={10} md={4} sx={{
+            <Grid style = {{margin: token ? "0 auto" : "0"}}item xs={false} sm={10} md={4} sx={{
                 marginLeft: '30px',
             }}>
                 <Box
