@@ -40,22 +40,22 @@ const RandomCheese = () => {
                         alignItems: 'lower',
                         justifyContent: 'center'}}
                 >    
-                    <Typography variant="h1">Random Cheese</Typography>
+                    <Typography variant="h1" style={{ fontSize: '50px' }}>Random Cheese</Typography>
                     <img src={link} alt={cheese.name} style={{ width: '100%', maxWidth: '350px', height: '250px', margin: '15 0' }} />
                     <Typography variant="h4">{cheese.name}</Typography>
-                    <Typography variant="h2">Cheese Type: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Cheese Type: </Typography>
                     {/* this conditional checks if exists once, then if not does nothing, then is rechecked when useEffect is called/component is re-rendered*/}
                     <Typography variant="p" className='randomCheeseFields' style={{ display: 'flex', flexDirection: 'row' }}>{cheese?.type?.map((item) => (
                         <p key={item} style={{ margin: '5px 10px 5px 0' }}>{item} </p>
                     ))}
                     </Typography>
-                    <Typography variant="h2">Description: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Description: </Typography>
                     <Typography variant="p" className='randomCheeseFields'>{cheese.description}</Typography>
-                    <Typography variant="h2">Flavour Profiles: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Flavour Profiles: </Typography>
                     <Typography variant="p" className='randomCheeseFields'>{ cheese.flavour ? cheese.flavour : 'Unknown'}</Typography>
-                    <Typography variant="h2">Cheese Families: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Cheese Families: </Typography>
                     <Typography variant="p" className='randomCheeseFields'>{ cheese.family ? cheese.family : 'Unknown'}</Typography>
-                    <Typography variant="h2">countries: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Aromas: </Typography>
                     <Typography 
                     variant="p" 
                     className='randomCheeseFields' 
@@ -67,9 +67,9 @@ const RandomCheese = () => {
                         <p key={item} style={{ margin: '5px 10px 5px 0' }}>{ item }</p>
                     )) : <p style={{ margin: '5px 10px 5px 0' }}>Unknown</p>}
                     </Typography>
-                    <Typography variant="h2">Regions of Origin: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Regions of Origin: </Typography>
                     <Typography variant="p" className='randomCheeseFields'>{ cheese.region ? cheese.region : 'Unknown'}</Typography>
-                    <Typography variant="h2">Countries of Origin: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Countries of Origin: </Typography>
                     <Typography 
                     variant="p" 
                     className='randomCheeseFields' 
@@ -81,7 +81,7 @@ const RandomCheese = () => {
                         <p key={item} style={{ margin: '5px 10px 5px 0' }}>{ item }</p>
                     )) : <p style={{ margin: '5px 10px 5px 0' }}>Unknown</p>}
                     </Typography>
-                    <Typography variant="h2">Milk Type: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Milk Type: </Typography>
                     <Typography 
                     variant="p" 
                     className='randomCheeseFields' 
@@ -93,7 +93,7 @@ const RandomCheese = () => {
                         <p key={item} style={{ margin: '5px 10px 5px 0' }}>{ item }</p>
                     )) : <p style={{ margin: '5px 10px 5px 0' }}>Unknown</p>}
                     </Typography>
-                    <Typography variant="h2">Suitable for Vegetarians: </Typography>
+                    <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Suitable for Vegetarians: </Typography>
                     <Typography variant="p" className='randomCheeseFields'>{ cheese.vegetarian ? cheese.vegetarian : 'Unknown'}</Typography>
                 </Box>
             </Grid>
