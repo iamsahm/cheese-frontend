@@ -49,6 +49,7 @@ const NavigationBar = () => {
                     <nav>
                         <Button
                             color="inherit"
+                            style = {{backgroundColor: 'white', marginRight: "10px", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}
                             id="basic-button"
                             aria-controls={open ? "basic-menu" : undefined}
                             aria-haspopup="true"

@@ -32,8 +32,8 @@ const RandomCheese = () => {
             </Grid>    
         
             {/* Right side: Random Cheese image */}
-            <Grid style = {{margin: token ? "0 auto" : "30px"}}item xs={false} sm={10} md={4} sx={{
-                marginLeft: '30px',
+            <Grid style = {{margin: token ? "0 auto" : "30px"}}item xs={false} sm={12} md={6} sx={{
+                minWidth: "50%"
             }}>
                 <Box
                     sx={{
