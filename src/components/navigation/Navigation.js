@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-const cheeseTypes = ["Hard", "Soft", "Artisan"]; // update this with the actual types we can search for
+
 const currentURL = window.location.href;
 const targetPath = '/';
 const cheeseTypes = [
