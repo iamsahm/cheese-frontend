@@ -7,6 +7,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const currentURL = window.location.href;
 const targetPath = '/';
@@ -91,12 +93,12 @@ const NavigationBar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
-                        <NavLink style={{display: token ?  "none" : "inline", marginRight: "10px"}} data-cy="signin" to="/" color="inherit">
-                            Sign In
-                        </NavLink>
-                        <Link style ={{display: token ? "inline": "none"}}data-cy="logout" to="/" onClick={handleClick}>
-                            Logout
-                        </Link>
+                        <Button style={{display: token ?  "none" : "inline", marginRight: "10px"}} data-cy="signin" to="/" color="inherit" component={Link}>
+                            <LoginIcon/> Sign In
+                        </Button>
+                        <Button style ={{display: token ? "inline": "none"}} data-cy="logout" to="/" color="inherit" component={Link}>
+                            <LogoutIcon/> Logout
+                        </Button>
                     </nav>
                 </Toolbar>
             </Container>
