@@ -8,7 +8,7 @@ describe("CheeseListItem", () => {
         region: "Test Region",
         countries: "Test Country",
         image: "test-image.jpg",
-        id: "test-cheese-id",
+        cheeseId: "test-cheese-id",
     };
 
     it("renders cheese details correctly", () => {
