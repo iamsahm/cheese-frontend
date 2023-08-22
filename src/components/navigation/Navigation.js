@@ -7,7 +7,17 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-const cheeseTypes = ["Hard", "Soft", "Artisan"]; // update this with the actual types we can search for
+const cheeseTypes = [
+    "Hard",
+    "Soft",
+    "Artisan",
+    "Fresh-Soft",
+    "Fresh-Firm",
+    "Semi-Soft",
+    "Semi-Hard",
+    "Firm",
+    "Semi-Firm",
+]; // update this with the actual types we can search for
 
 const handleClick = () => {
     window.localStorage.removeItem("token");
