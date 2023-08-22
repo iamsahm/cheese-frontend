@@ -96,7 +96,7 @@ const NavigationBar = () => {
                         <Button style={{display: token ?  "none" : "inline", marginRight: "10px"}} data-cy="signin" to="/" color="inherit" component={Link}>
                             <LoginIcon/> Sign In
                         </Button>
-                        <Button style ={{display: token ? "inline": "none"}} data-cy="logout" to="/" color="inherit" component={Link}>
+                        <Button style ={{display: token ? "inline": "none"}} data-cy="logout" to="/" color="inherit" component={Link} onClick={handleClick}>
                             <LogoutIcon/> Logout
                         </Button>
                     </nav>
