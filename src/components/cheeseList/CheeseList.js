@@ -4,7 +4,6 @@ import { useParams } from "react-router";
 
 const CheeseList = () => {
     let { type } = useParams();
-    console.log("cheeseType", type);
     const [cheeses, setCheeses] = useState([]);
 
     useEffect(() => {
