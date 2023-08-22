@@ -42,8 +42,8 @@ const RandomCheese = () => {
                         alignItems: 'lower',
                         justifyContent: 'center'}}
                 >    
-                    <Typography variant="h1" style={{ fontSize: '50px' }}>Random Cheese</Typography>
-                    <img src={link} alt={cheese.name} style={{ width: '100%', maxWidth: '350px', height: '250px', margin: '15 0' }} />
+                    <Typography variant="h1" style={{ fontSize: '40px' }}>Random Cheese</Typography>
+                    <img src={link} alt={cheese.name} style={{ width: '100%', maxWidth: '250px', height: '200px', margin: '15 0' }} />
                     <Typography variant="h4">{cheese.name}</Typography>
                     <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600'}}>Cheese Type: </Typography>
                     {/* this conditional checks if exists once, then if not does nothing, then is rechecked when useEffect is called/component is re-rendered*/}

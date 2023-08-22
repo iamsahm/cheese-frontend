@@ -29,7 +29,7 @@ const LogInForm = ({ navigate }) => {
 
         if (response.status !== 201) {
             console.log("yay");
-            navigate("/login");
+            navigate("/");
         } else {
             console.log("oop");
             let data = await response.json();

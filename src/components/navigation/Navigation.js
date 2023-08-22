@@ -83,7 +83,7 @@ const NavigationBar = () => {
                         <NavLink style={{display: token ?  "none" : "inline", marginRight: "10px"}} data-cy="signin" to="/" color="inherit">
                             Sign In
                         </NavLink>
-                        <Link data-cy="logout" to="/" onClick={handleClick}>
+                        <Link style ={{display: token ? "inline": "none"}}data-cy="logout" to="/" onClick={handleClick}>
                             Logout
                         </Link>
                     </nav>
