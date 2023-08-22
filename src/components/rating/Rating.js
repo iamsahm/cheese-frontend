@@ -27,6 +27,7 @@ const RatingComponent = ({cheeseId}) => {
 
     useEffect(() => {
         fetchMeanRating();
+
         }
     , [cheeseId])
 
@@ -43,3 +44,4 @@ const RatingComponent = ({cheeseId}) => {
 }
  
 export default RatingComponent;
+
