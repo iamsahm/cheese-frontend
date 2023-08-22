@@ -4,7 +4,7 @@ const CheeseListItem = (props) => {
     const cheese = props.cheese;
     cheese.shortDescription = cheese.description.slice(0, 100).concat("...");
     return (
-        <a data-cy="idlink" href={`/cheeses/${cheese.id}`}>
+        <a data-cy="idlink" href={`/cheeses/${cheese.cheeseId}`}>
             <Card>
                 <img
                     src={cheese.image}
