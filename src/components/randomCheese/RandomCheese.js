@@ -25,14 +25,14 @@ const RandomCheese = () => {
 
 
     return (
-        <Grid container component="main" sx={{ height: '100vh' }}>
+        <Grid style={{backgroundColor: "#fafafa"}} container component="main" sx={{ height: '100vh' }}>
             {/* Left side: Login box */}
-            <Grid style={{display: token ? "none" : "block"}} item xs={12} sm={10} md={5} component={Paper} elevation={6} square>
+            <Grid style={{display: token ? "none" : "block", width: "100%", height: "100%"}} item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
                 <LogInForm navigate={navigate} />
             </Grid>    
         
             {/* Right side: Random Cheese image */}
-            <Grid style = {{margin: token ? "0 auto" : "0"}}item xs={false} sm={10} md={4} sx={{
+            <Grid style = {{margin: token ? "0 auto" : "30px"}}item xs={false} sm={10} md={4} sx={{
                 marginLeft: '30px',
             }}>
                 <Box

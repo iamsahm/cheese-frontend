@@ -56,7 +56,7 @@ const LogInForm = ({ navigate }) => {
       sm={12}
       md={6}
       sx={{
-          display: 'flex',
+          display: 'block',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
