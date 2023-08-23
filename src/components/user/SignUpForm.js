@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API_URL from '../../../config';
 
 const SignUpForm = ({ navigate }) => {
 
@@ -9,7 +10,7 @@ const SignUpForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch( '/api/users', {
+    fetch( `${API_URL}api/users`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',

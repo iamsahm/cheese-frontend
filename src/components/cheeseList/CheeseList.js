@@ -1,6 +1,7 @@
 import CheeseListItem from "./CheeseListItem";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import API_URL from "../../../config";
 
 const CheeseList = () => {
     let { type } = useParams();
@@ -8,7 +9,7 @@ const CheeseList = () => {
 
     useEffect(() => {
         const fetchCheeses = async () => {
-            const response = await fetch(`/api/cheeses/type/${type}`);
+            const response = await fetch(`${API_URL}/api/cheeses/type/${type}`);
             const data = await response.json();
             setCheeses(data);
         };

@@ -1,16 +1,16 @@
 import {useState, useEffect} from 'react'
 import {Typography, Rating, Box} from '@mui/material'
 import MakeRating from '../makeRating/MakeRating'
+import API_URL from '../../../config'
 
 
 
 const RatingComponent = ({cheeseId}) => {
     const [meanRating, setMeanRating] = useState()
-    const [token, setToken] = useState(window.localStorage.getItem("token"))
     
     async function fetchMeanRating() {
         try {
-            const response = await fetch(`/api/ratings/${cheeseId}`);
+            const response = await fetch(`${API_URL}/api/ratings/${cheeseId}`);
             if (response.status === 404) {
                 setMeanRating('This cheese is yet to be rated!')
             } else if (response.status === 200) {

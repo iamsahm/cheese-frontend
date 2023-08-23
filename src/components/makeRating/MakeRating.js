@@ -1,10 +1,11 @@
 import {useState} from 'react'
-import {FormControl, InputLabel, Select, MenuItem, Container, Box} from '@mui/material'
+import {FormControl, InputLabel, Select, MenuItem, Box} from '@mui/material'
 import StyledButton from '../app/styledButton'
+import API_URL from '../../../config'
 
 const MakeRating = ({cheeseId, handleAddRating}) => {
     const [cheeseRating, setCheeseRating] = useState()
-    const [token, setToken] = useState(window.localStorage.getItem("token"))
+    const [token] = useState(window.localStorage.getItem("token"))
     const [message, setMessage] = useState("")
 
     const handleRatingChange = (event) => {
@@ -13,7 +14,7 @@ const MakeRating = ({cheeseId, handleAddRating}) => {
 
     const handleRatingSubmit = async () => {
         try {
-            const response = await fetch(`/api/ratings/cheese/${cheeseId}`,
+            const response = await fetch(`${API_URL}/api/ratings/cheese/${cheeseId}`,
             {
                 method: 'POST',
                 headers: {
