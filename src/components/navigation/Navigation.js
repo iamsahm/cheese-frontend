@@ -78,11 +78,13 @@ const NavigationBar = () => {
                             keepMounted
                             open={Boolean(anchorEl)}
                             onClose={handleMenuClose}
+                            
                         >
                             {cheeseTypes.map((cheeseType) => (
                                 <MenuItem
                                     key={cheeseType}
                                     onClick={handleMenuClose}
+                                    style={{width: '179px'}}
                                 >
                                     <Link
                                         to={`/cheeses/type/${cheeseType.toLowerCase()}`}
@@ -94,10 +96,13 @@ const NavigationBar = () => {
                             ))}
                         </Menu>
                         <Button style={{display: token ?  "none" : "inline", marginRight: "10px"}} data-cy="signin" to="/" color="inherit" component={Link}>
-                            <LoginIcon/> Sign In
+                            <LoginIcon style={{position: 'relative', top:'5px'}}/> 
+                            <span style={{position: 'relative', top: '-2px',left: '5px'}}>Sign In</span>
                         </Button>
+
                         <Button style ={{display: token ? "inline": "none"}} data-cy="logout" to="/" color="inherit" component={Link} onClick={handleClick}>
-                            <LogoutIcon/> Logout
+                            <LogoutIcon style={{position: 'relative', top:'5px'}}/> 
+                            <span style={{position: 'relative', top: '-2px',left: '5px'}}>Logout</span>
                         </Button>
                     </nav>
                 </Toolbar>
