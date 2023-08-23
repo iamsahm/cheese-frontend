@@ -34,7 +34,7 @@ describe("Individual cheese component", () => {
             </MemoryRouter>
         );
 
-        cy.get("h1").should("contain", "Cheddar");
+        cy.get("h4").should("contain", "Cheddar");
     });
     it("displays a 404 if the id doesn't exist", () => {
         cy.mount(
