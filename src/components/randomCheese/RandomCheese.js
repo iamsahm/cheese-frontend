@@ -5,14 +5,15 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom'; 
 import LogInForm from './/../auth/LoginForm';
+import API_URL from '../config';
 
 const RandomCheese = () => {
     const [cheese, setCheese] = useState([]);
     const navigate = useNavigate(); 
-    const [token, setToken] = useState(window.localStorage.getItem("token"))
+    const [token] = useState(window.localStorage.getItem("token"))
     
     useEffect(() => {
-        fetch("/api/cheeses/random")
+        fetch(`${API_URL}/api/cheeses/random`)
         .then((response) => {
             response.json()
             .then((data) => {
