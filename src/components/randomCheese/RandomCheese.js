@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom'; 
 import LogInForm from './/../auth/LoginForm';
-import API_URL from '../../../config';
+import API_URL from '../../config';
 
 const RandomCheese = () => {
     const [cheese, setCheese] = useState([]);

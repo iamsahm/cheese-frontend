@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {Typography, Rating, Box} from '@mui/material'
 import MakeRating from '../makeRating/MakeRating'
-import API_URL from '../../../config'
+import API_URL from '../../config'
 
 
 
