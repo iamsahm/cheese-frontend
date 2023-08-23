@@ -99,7 +99,8 @@ const NavigationBar = () => {
                             <LoginIcon style={{position: 'relative', top:'5px'}}/> 
                             <span style={{position: 'relative', top: '-2px',left: '5px'}}>Sign In</span>
                         </Button>
-                        <Button style ={{display: token ? "inline": "none"}} data-cy="logout" to="/" color="inherit" component={Link}>
+
+                        <Button style ={{display: token ? "inline": "none"}} data-cy="logout" to="/" color="inherit" component={Link} onClick={handleClick}>
                             <LogoutIcon style={{position: 'relative', top:'5px'}}/> 
                             <span style={{position: 'relative', top: '-2px',left: '5px'}}>Logout</span>
                         </Button>
