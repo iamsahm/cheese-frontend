@@ -9,6 +9,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import logoIcon from './/../app/cheese.png';
+import StyledButton from '../app/styledButton';
 
 const currentURL = window.location.href;
 const targetPath = '/';
@@ -56,9 +58,9 @@ const NavigationBar = () => {
                         alignItems: "center",
                     }}
                 >
-                    <Link data-cy="home" to="/">
-                        <h1>Brielievers</h1>
-                    </Link>
+                    <StyledButton data-cy="home" to="/" color="inherit" component={Link}>
+                    <img src={logoIcon} alt="Logo" style={{ width: 40, height: 40 ,marginRight: "5px"}} /> Brielievers
+                    </StyledButton>
                     <nav>
                         <Button
                             color="inherit"
