@@ -9,7 +9,7 @@ import LogInForm from ".//../auth/LoginForm";
 const RandomCheese = () => {
     const [cheese, setCheese] = useState([]);
     const navigate = useNavigate();
-    const [token, setToken] = useState(window.localStorage.getItem("token"));
+    const token = window.localStorage.getItem("token");
 
     useEffect(() => {
         fetch("/api/cheeses/random").then((response) => {
@@ -110,7 +110,11 @@ const RandomCheese = () => {
                     >
                         Description:{" "}
                     </Typography>
-                    <Typography variant="p" className="randomCheeseFields">
+                    <Typography
+                        data-cy="description"
+                        variant="p"
+                        className="randomCheeseFields"
+                    >
                         {cheese.description}
                     </Typography>
                     <Typography
