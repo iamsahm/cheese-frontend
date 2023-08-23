@@ -1,8 +1,9 @@
 
 import './App.css';
-import {RandomCheese} from '../randomCheese/RandomCheese'
-import SignUpForm from '../user/SignUpForm'
+import {RandomCheese} from '../randomCheese/RandomCheese';
+import SignUpForm from '../user/SignUpForm';
 import NavigationBar from "../navigation/Navigation";
+import MapCheese from '../mapCheese/MapCheese'
 import IndividualCheese from "../individualCheese/IndividualCheese";
 import CheeseList from "../cheeseList/CheeseList";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -23,20 +24,20 @@ const theme = createTheme({
 
 
 const themeOptions = createTheme({
-  palette: {
-      mode: 'light',
-      primary: {
-      main: '#ffab00',
-      contrastText: '#ff6f00',
-      },
-      secondary: {
-      main: '#f50057',
-      },
-  },
+    palette: {
+        mode: 'light',
+        primary: {
+        main: '#ffab00',
+        contrastText: '#ff6f00',
+        },
+        secondary: {
+        main: '#f50057',
+        },
+    },
 });
 
 themeOptions.typography.h1 = {
-  fontSize: '50px',
+    fontSize: '50px',
 };
 
 
@@ -64,7 +65,8 @@ function App() {
                         path="/cheeses/type/:type"
                         element={<CheeseList />}
                     />
-                </Routes>
+                    <Route path="/map" element={<MapCheese/>} />
+                    </Routes>
             </ThemeProvider>
         </div>
     );
