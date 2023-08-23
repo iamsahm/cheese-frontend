@@ -2,6 +2,7 @@ import CheeseListItem from "./CheeseListItem";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import API_URL from "../config";
+import './cheeseList.css';
 
 const CheeseList = () => {
     let { type } = useParams();
@@ -19,9 +20,9 @@ const CheeseList = () => {
     }, [type]);
 
     return (
-        <div>
-            {cheeses.map((cheese) => (
-                <CheeseListItem key={cheese.id} cheese={cheese} />
+        <div style={{margin: "50px"}}>
+            {cheeses.map((cheese, index) => (
+                <CheeseListItem key={cheese.id} cheese={cheese} index={index}/>
             ))}
         </div>
     );
