@@ -6,7 +6,7 @@ describe("CheeseListItem", () => {
         description:
             "This is a test cheese description. This is a test cheese description.This is a test cheese description.This is a test cheese description.This is a test cheese description.This is a test cheese description.It has more than 100 characters...",
         region: "Test Region",
-        countries: "Test Country",
+        countries: ["Test Country"],
         image: "test-image.jpg",
         cheeseId: "test-cheese-id",
     };
@@ -18,9 +18,13 @@ describe("CheeseListItem", () => {
             "contain",
             "This is a test cheese description. This is a test cheese description.This is a test cheese descripti..."
         );
-        cy.get("[data-cy=cheeseRegionCountry]").should(
+        cy.get("[data-cy=cheeseRegion]").should(
             "contain",
-            "Test Region: Test Country"
+            "Test Region"
+        );
+        cy.get("[data-cy=cheeseCountry]").should(
+            "contain",
+            "Test Country"
         );
         cy.get("img").should("have.attr", "src", mockCheese.image);
         cy.get("[data-cy=idlink]").should(

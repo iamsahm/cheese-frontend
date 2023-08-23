@@ -26,13 +26,13 @@ describe("Cheeselist displays cheeseslistitems components", () => {
                     name: "Gruyere",
                     description:
                         "A hard yellow cheese made from cows milk, named after the town of Gruyères in Switzerland. It is sweet but slightly salty, with a flavour that varies widely with age. It is often described as creamy and nutty when young, becoming with age more assertive, earthy, and complex. When fully aged (five months to a year) it tends to have small cracks that impart a slightly grainy texture.",
-                    type: "Hard",
+                    type: ["Hard"],
                     flavour: "Salty",
                     family: "Gruyere",
-                    aromas: "Salty",
+                    aromas: ["Salty"],
                     region: "Gruyere",
-                    countries: "Switzerland",
-                    milks: "Cow",
+                    countries: ["Switzerland"],
+                    milks: ["Cow"],
                     vegetarian: "Yes",
                     image: "https://i.imgur.com/0x1XH4k.jpeg",
                 },
@@ -53,6 +53,6 @@ describe("Cheeselist displays cheeseslistitems components", () => {
             "contain",
             "A hard, sharp cheese with big chunky crystals made in Somerset in England. It is a hard and natural ..."
         );
-        cy.get("[data-cy=cheeseRegionCountry]").should("contain", "Somerset");
+        cy.get("[data-cy=cheeseRegion]").should("contain", "Somerset");
     });
 });
