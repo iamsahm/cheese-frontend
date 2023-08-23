@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {FormControl, InputLabel, Select, MenuItem, Box} from '@mui/material'
 import StyledButton from '../app/styledButton'
-import API_URL from '../../config'
+import API_URL from '../config'
 
 const MakeRating = ({cheeseId, handleAddRating}) => {
     const [cheeseRating, setCheeseRating] = useState()

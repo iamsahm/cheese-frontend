@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import StyledButton from '@mui/material/Button';
-import API_URL from '../../../config';
+import API_URL from '../config';
 
 const AllCheeses = ()=> {
     const [cheeses, setCheeses] = useState([]);

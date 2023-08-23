@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import RatingComponent from "../rating/Rating";
 import {Container} from '@mui/material'
-import API_URL from "../../../config";
+import API_URL from "../config";
 
 
 const IndividualCheeseComponent = () => {
