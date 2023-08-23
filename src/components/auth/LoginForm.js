@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import TextField from '@mui/material/TextField'; 
 import StyledButton from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -14,11 +14,33 @@ import API_URL from "../config";
 
 
 const LogInForm = ({ navigate }) => {
+    const [rememberMe, setRememberMe] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+
+    useEffect(() => {
+      const storedRememberMe = localStorage.getItem('rememberedRememberMe');
+      if (storedRememberMe) {
+        setRememberMe(JSON.parse(storedRememberMe));
+        const storedEmail = localStorage.getItem('rememberedEmail');
+        const storedPassword = localStorage.getItem('rememberedPassword');
+        if (storedEmail) setEmail(storedEmail);
+        if (storedPassword) setPassword(storedPassword);
+      }
+    }, []);
+    
+    useEffect(() => {
+      localStorage.setItem('rememberedRememberMe', JSON.stringify(rememberMe));
+    }, [rememberMe]);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (rememberMe) {
+          localStorage.setItem('rememberedEmail', email);
+          localStorage.setItem('rememberedPassword', password);
+        }
 
         let response = await fetch(`${API_URL}/api/tokens`, {
             method: "post",
@@ -47,6 +69,11 @@ const LogInForm = ({ navigate }) => {
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     };
+
+    const handleCheckboxChange = (event) => {
+      setRememberMe(event.target.checked);
+    };
+
 
   return ( 
     <Grid container component="main" sx={{ height: '100vh' }}>
@@ -112,7 +139,13 @@ const LogInForm = ({ navigate }) => {
         onChange={handlePasswordChange}
       />
       <FormControlLabel
-        control={<Checkbox value="remember" color="primary" />}
+        control={
+        <Checkbox 
+        value="remember" 
+        color="primary" 
+        checked={rememberMe}
+        onChange={handleCheckboxChange}
+        />}
         label="Remember me"
       />
       <StyledButton
