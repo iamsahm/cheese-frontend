@@ -1,13 +1,11 @@
 
 import './App.css';
 import {RandomCheese} from '../randomCheese/RandomCheese'
-import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../user/SignUpForm'
 import NavigationBar from "../navigation/Navigation";
 import IndividualCheese from "../individualCheese/IndividualCheese";
 import CheeseList from "../cheeseList/CheeseList";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import {
   useNavigate,
   Routes,
