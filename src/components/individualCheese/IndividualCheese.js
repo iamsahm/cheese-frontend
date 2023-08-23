@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import RatingComponent from "../rating/Rating";
-import MakeRating from "../makeRating/MakeRating";
 import {Container} from '@mui/material'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import API_URL from "../config";
 
 const IndividualCheeseComponent = () => {
     const [cheese, setCheese] = useState({});
@@ -12,7 +12,7 @@ const IndividualCheeseComponent = () => {
 
     useEffect(() => {
         const fetchCheese = async () => {
-            const response = await fetch(`/api/cheeses/${id}`);
+            const response = await fetch(`${API_URL}/api/cheeses/${id}`);
             const data = await response.json();
             setCheese(data);
         };
