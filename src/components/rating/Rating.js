@@ -35,9 +35,9 @@ const RatingComponent = ({cheeseId}) => {
         fetchMeanRating()
     }
     return ( 
-        <Box sx ={{ alignItems : 'left'}}>
-        <Typography>Average rating: {meanRating}</Typography>
-        <Rating sx={{marginBottom: 1, marginTop: 1}} name="mean-rating" value={parseFloat(meanRating)} readOnly />
+        <Box style={{marginTop: "10px"}}sx ={{ alignItems : 'left'}}>
+        <Typography style={{fontSize:'18px'}}><b>Average rating:</b> {meanRating}</Typography>
+        <Rating style={{marginTop: "10px"}}sx={{marginBottom: 1, marginTop: 1}} name="mean-rating" value={parseFloat(meanRating)} readOnly />
         <MakeRating cheeseId={cheeseId} handleAddRating={handleAddRating}/>
         </Box>
      );

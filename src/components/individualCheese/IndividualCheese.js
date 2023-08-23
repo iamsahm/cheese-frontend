@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import RatingComponent from "../rating/Rating";
 import MakeRating from "../makeRating/MakeRating";
 import {Container} from '@mui/material'
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 const IndividualCheeseComponent = () => {
     const [cheese, setCheese] = useState({});
@@ -21,21 +23,74 @@ const IndividualCheeseComponent = () => {
         return <h1>404 error, cheese not found! </h1>;
     }
 
+    const link = cheese.image;
     return (
-        <Container sx={{marginTop: 5}}>
-            <img src={cheese.image} alt={cheese.name} />
-            <h1>{cheese.name}</h1>
-            <p>{cheese.description}</p>
-            <p>Type: {cheese.type}</p>
-            <p>Flavour: {cheese.flavour}</p>
-            <p>Family: {cheese.family}</p>
-            <p>Aromas: {cheese.aromas}</p>
-            <p>Region: {cheese.region}</p>
-            <p>Countries: {cheese.countries}</p>
-            <p>Milks: {cheese.milks}</p>
-            <p>Vegetarian: {cheese.vegetarian}</p>
-            <RatingComponent cheeseId={id}/>
-        </Container>
+
+        <Box
+        sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'lower',
+            justifyContent: 'center',
+            margin: "50px"
+        }}
+    >    
+        <img src={link} alt={cheese.name} style={{ width: '100%', maxWidth: '250px', height: '200px', margin: '15 0' }} />
+        <Typography style={{marginTop: "10px"}} variant="h4">{cheese.name}</Typography>
+        <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Cheese Type: </Typography>
+        {/* this conditional checks if exists once, then if not does nothing, then is rechecked when useEffect is called/component is re-rendered*/}
+        <Typography variant="p" className='randomCheeseFields' style={{ display: 'flex', flexDirection: 'row' }}>{cheese?.type?.map((item) => (
+            <p key={item} style={{ margin: '0px 10px 5px 0' }}>{item} </p>
+        ))}
+        </Typography>
+        <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Description: </Typography>
+        <Typography variant="p" className='randomCheeseFields'>{cheese.description}</Typography>
+        <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Flavour Profiles: </Typography>
+        <Typography variant="p" className='randomCheeseFields'>{ cheese.flavour ? cheese.flavour : 'Unknown'}</Typography>
+        <Typography  variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Cheese Families: </Typography>
+        <Typography variant="p" className='randomCheeseFields'>{ cheese.family ? cheese.family : 'Unknown'}</Typography>
+        <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Aromas: </Typography>
+        <Typography 
+        variant="p" 
+        className='randomCheeseFields' 
+        style={{ 
+            display: 'flex', 
+            flexDirection: 'row' 
+        }}
+        >{cheese.aromas && cheese.aromas.length > 0 ? cheese?.aromas?.map((item) => (
+            <p key={item} style={{ margin: '0px 10px 5px 0' }}>{ item }</p>
+        )) : <p style={{ margin: '0px 10px 5px 0' }}>Unknown</p>}
+        </Typography>
+        <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Regions of Origin: </Typography>
+        <Typography variant="p" className='randomCheeseFields'>{ cheese.region ? cheese.region : 'Unknown'}</Typography>
+        <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Countries of Origin: </Typography>
+        <Typography 
+        variant="p" 
+        className='randomCheeseFields' 
+        style={{ 
+            display: 'flex', 
+            flexDirection: 'row' 
+        }}
+        >{cheese.countries && cheese.countries.length > 0 ? cheese?.countries?.map((item) => (
+            <p key={item} style={{ margin: '0px 10px 5px 0' }}>{ item }</p>
+        )) : <p style={{ margin: '0px 10px 5px 0' }}>Unknown</p>}
+        </Typography>
+        <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Milk Type: </Typography>
+        <Typography 
+        variant="p" 
+        className='randomCheeseFields' 
+        style={{ 
+            display: 'flex', 
+            flexDirection: 'row' 
+        }}
+        >{cheese.milks && cheese.milks.length > 0 ? cheese?.milks?.map((item) => (
+            <p key={item} style={{ margin: '0px 10px 5px 0' }}>{ item }</p>
+        )) : <p style={{ margin: '0px 10px 5px 0' }}>Unknown</p>}
+        </Typography>
+        <Typography variant="h2" style={{fontSize:'18px', fontWeight: '600', marginTop: "10px"}}>Suitable for Vegetarians: </Typography>
+        <Typography variant="p" className='randomCheeseFields'>{ cheese.vegetarian ? cheese.vegetarian : 'Unknown'}</Typography>
+        <RatingComponent cheeseId={id}/>
+    </Box>
 
     );
 };
