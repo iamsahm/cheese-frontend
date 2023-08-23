@@ -2,7 +2,7 @@ import CheeseListItem from "./CheeseListItem";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import API_URL from "../config";
-import './cheeseList.css';
+
 
 const CheeseList = () => {
     let { type } = useParams();
