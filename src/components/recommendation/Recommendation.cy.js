@@ -1,9 +1,9 @@
 import RecommendationComponent from "./Recommendation";
-import { MemoryRouter, Routes, Route } from "react-router";
+import { MemoryRouter } from "react-router";
 
 describe("Cheese Recommendation", () => {
     it("should display the individual cheese component for the cheese object it receives, with some text", () => {
-        cy.intercept("GET", "/api/ratings/cheese/recommendation", {
+        cy.intercept("GET", "/api/ratings/get/recommendation", {
             statusCode: 200,
             body: {
                 message: "Recommendation found",
