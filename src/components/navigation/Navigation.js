@@ -89,6 +89,7 @@ const NavigationBar = () => {
                                     key={cheeseType}
                                     onClick={handleMenuClose}
                                     style={{width: '179px'}}
+                                    data-cy={`cheese-type-${cheeseType.toLowerCase()}`}
                                 >
                                     <Link
                                         to={`/cheeses/type/${cheeseType.toLowerCase()}`}
