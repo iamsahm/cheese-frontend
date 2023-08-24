@@ -18,5 +18,10 @@ describe("Navigation bar", () => {
             .should("have.attr", "href", "/");
         cy.get("[data-cy=cheese-menu]").should("contain", "Hard");
         cy.get("[data-cy=cheese-menu]").should("contain", "All");
+        cy.get('[data-cy="recommendation"]').should(
+            "contain",
+            "Get recommendation"
+        );
+
     });
 });
