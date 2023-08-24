@@ -1,5 +1,6 @@
 import React ,{useState ,useEffect} from 'react';
 import { GoogleMap, Marker, InfoWindow, LoadScript } from '@react-google-maps/api';
+import API_URL from '../config';
 
 const countriesCoordinates = {
     "Spain": { lat: 40.4637, lng: -3.7492 },
@@ -41,8 +42,8 @@ const countriesCoordinates = {
     "Austria": { lat: 47.5162, lng: 14.5501 },
     "Great Britain": { lat: 51.5074, lng: -0.1278 },
     "China": { lat: 35.8617, lng: 104.1954 }, 
-    "Nepa": { lat: 28.3949, lng: 84.1240 },
-    "Japa": { lat: 36.2048, lng: 138.2529 }
+    "Nepal": { lat: 28.3949, lng: 84.1240 },
+    "Japan": { lat: 36.2048, lng: 138.2529 }
 
 };
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
@@ -53,19 +54,12 @@ const MapCheese = () => {
 
         useEffect(() => {
           // Fetch cheese data from your backend API
-            fetch(`/api/cheeses/all`)
+            fetch(`${API_URL}/api/cheeses/all`)
             .then((response) => response.json())
             .then((data) => {
                 setCheeses(data);
             });
         }, []);
-
-        const mapStyles = {
-            height: '500px',
-            width: '100%',
-        };    
-
-        const defaultCenter = { lat: 0, lng: 0 };
 
         const groupedCheeses = {};
 
@@ -113,47 +107,5 @@ const MapCheese = () => {
                 </LoadScript>
             );
             };
-
-
-
-// Center the map at a default location or any preferred location
-//     const defaultCenter = { lat: 0, lng: 0 };
-
-//     return (
-//         <LoadScript googleMapsApiKey="AIzaSyDO63pNSmcrrLnkmn97gP9tLOq_92ndezU">
-
-//         <GoogleMap mapContainerStyle={mapStyles} center={defaultCenter} zoom={2}>
-//                 {Array.isArray(cheeses) && cheeses.length > 0 ? (
-//                     cheeses.map((cheese) => {
-//                         if (cheese.countries && countriesCoordinates[cheese.countries]) {
-//                             const { lat, lng } = countriesCoordinates[cheese.countries];
-//                             return (
-//                                 <Marker
-//                                     key={cheese.id}
-//                                     position={{ lat, lng }}
-//                                     onClick={() => setSelectedCheese(cheese)}
-//                                     data-cy="cheese-marker"
-//                                 >
-//                                 {selectedCheese === cheese && (
-//                                         <InfoWindow onCloseClick={() => setSelectedCheese(null)}>
-//                                             <div data-cy="info">
-//                                                 <a data-cy ="link" href={`/cheeses/${cheese.cheeseId}`}>
-//                                                     {cheese.name}
-//                                                 </a>
-//                                             </div>
-//                                         </InfoWindow>
-//                                         )}
-//                                         </Marker>
-//                                     );
-//                                 }
-//                                 return null;
-//                             })
-//                         ) : (
-//                             <Marker position={defaultCenter} />
-//                             )}
-//             </GoogleMap>
-//         </LoadScript>
-//     );
-// };
 
 export default MapCheese;
