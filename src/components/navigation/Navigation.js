@@ -5,6 +5,7 @@ import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
+import MapIcon from '@mui/icons-material/Map';
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import LoginIcon from "@mui/icons-material/Login";
@@ -118,6 +119,10 @@ const NavigationBar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
+                        <Button to="/map" color="inherit" component={Link}>
+                            <MapIcon style={{position: 'relative', top:'5px'}}/> 
+                            <span style={{position: 'relative', top: '-2px',left: '5px'}}>Cheese Map</span>
+                        </Button>
                         <Button
                             style={{
                                 display: token ? "inline" : "none",
