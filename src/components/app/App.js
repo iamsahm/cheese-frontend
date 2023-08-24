@@ -65,7 +65,7 @@ function App() {
                         path="/cheeses/type/:type"
                         element={<CheeseList />}
                     />
-                    <Route path="/map" element={<MapCheese/>} />
+                    <Route path="/map" element={<MapCheese navigate={useNavigate()}/>} />
                     </Routes>
             </ThemeProvider>
         </div>

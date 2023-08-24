@@ -1,7 +1,6 @@
 // AIzaSyDO63pNSmcrrLnkmn97gP9tLOq_92ndezU
 import React ,{useState ,useEffect} from 'react';
 import { GoogleMap, Marker, InfoWindow, LoadScript } from '@react-google-maps/api';
-import API_URL from '../config';
 
 const countriesCoordinates = {
     "Spain": { lat: 40.4637, lng: -3.7492 },
@@ -40,65 +39,140 @@ const countriesCoordinates = {
     "Romania": { lat: 45.9432, lng: 24.9668 },
     "Isle of Man": { lat: 54.2361, lng: -4.5481 },
     "Argentina": { lat: -38.4161, lng: -63.6167 },
+    "Austria": { lat: 47.5162, lng: 14.5501 },
+    "Great Britain": { lat: 51.5074, lng: -0.1278 },
+    "China": { lat: 35.8617, lng: 104.1954 }, 
+    "Nepa": { lat: 28.3949, lng: 84.1240 },
+    "Japa": { lat: 36.2048, lng: 138.2529 }
 
 };
 
+
+// const MapCheese = () => {
+//     const [cheeses, setCheeses] = useState([]);
+//     const [selectedCheese, setSelectedCheese] = useState(null);
+
+//     useEffect(() => {
+//         // Fetch cheese data from your backend API
+//         fetch(`/api/cheeses/all`)
+//         .then((response) => response.json())
+//         .then((data) => {
+//             setCheeses(data);
+//         });
+//     }, []);
+
+//     const mapStyles = {
+//         height: '500px',
+//         width: '90%',
+//     };   
 
 const MapCheese = () => {
     const [cheeses, setCheeses] = useState([]);
-    const [selectedCheese, setSelectedCheese] = useState(null);
+    const [selectedMarker, setSelectedMarker] = useState(null);
 
-    useEffect(() => {
-        // Fetch cheese data from your backend API
-        fetch(`/api/cheeses/all`)
-        .then((response) => response.json())
-        .then((data) => {
-            setCheeses(data);
-        });
-    }, []);
+        useEffect(() => {
+          // Fetch cheese data from your backend API
+            fetch(`/api/cheeses/all`)
+            .then((response) => response.json())
+            .then((data) => {
+                setCheeses(data);
+            });
+        }, []);
 
-    const mapStyles = {
-        height: '500px',
-        width: '90%',
-    };
+        const mapStyles = {
+            height: '500px',
+            width: '100%',
+        };    
+
+        const defaultCenter = { lat: 0, lng: 0 };
+
+        const groupedCheeses = {};
+
+        // Group cheeses by coordinates
+        cheeses.forEach((cheese) => {
+            if (cheese.countries && countriesCoordinates[cheese.countries]) {
+                const { lat, lng } = countriesCoordinates[cheese.countries];
+                const locationKey = `${lat}-${lng}`;
+                if (!groupedCheeses[locationKey]) {
+                    groupedCheeses[locationKey] = [];
+                }
+                groupedCheeses[locationKey].push(cheese);
+                }
+            });
+        
+        
+        return (
+            <LoadScript googleMapsApiKey="AIzaSyDO63pNSmcrrLnkmn97gP9tLOq_92ndezU">
+                <GoogleMap mapContainerStyle={{ width: '100%', height: '600px' }} center={{ lat: 0, lng: 0 }} zoom={2}>
+                    {Object.keys(groupedCheeses).map((locationKey) => {
+                    const [lat, lng] = locationKey.split('-').map(parseFloat);
+                    return (
+                        <Marker
+                        key={locationKey}
+                        position={{ lat, lng }}
+                        onClick={() => setSelectedMarker(locationKey)}
+                        >
+                        {selectedMarker === locationKey && (
+                            <InfoWindow onCloseClick={() => setSelectedMarker(null)}>
+                            <div>
+                                {groupedCheeses[locationKey].map((cheese) => (
+                                <div key={cheese.id}>
+                                    <a href={`/cheeses/${cheese.cheeseId}`}>
+                                    {cheese.name}
+                                    </a>
+                                </div>
+                                ))}
+                            </div>
+                            </InfoWindow>
+                        )}
+                        </Marker>
+                    );
+                    })}
+                </GoogleMap>
+                </LoadScript>
+            );
+            };
+
+
 
 // Center the map at a default location or any preferred location
-    const defaultCenter = { lat: 0, lng: 0 };
+//     const defaultCenter = { lat: 0, lng: 0 };
 
-    return (
-        <LoadScript googleMapsApiKey="AIzaSyDO63pNSmcrrLnkmn97gP9tLOq_92ndezU">
+//     return (
+//         <LoadScript googleMapsApiKey="AIzaSyDO63pNSmcrrLnkmn97gP9tLOq_92ndezU">
 
-        <GoogleMap mapContainerStyle={mapStyles} center={defaultCenter} zoom={2}>
-                {Array.isArray(cheeses) && cheeses.length > 0 ? (
-                    cheeses.map((cheese) => {
-                        if (cheese.countries && countriesCoordinates[cheese.countries]) {
-                            const { lat, lng } = countriesCoordinates[cheese.countries];
-                            return (
-                                <Marker
-                                    key={cheese.id}
-                                    position={{ lat, lng }}
-                                    onClick={() => setSelectedCheese(cheese)}
-                                >
-                                {selectedCheese === cheese && (
-                                        <InfoWindow onCloseClick={() => setSelectedCheese(null)}>
-                                            <div>
-                                                <a href={`/cheeses/${cheese.cheeseId}`}>
-                                                    {cheese.name}
-                                                </a>
-                                            </div>
-                                        </InfoWindow>
-                                        )}
-                                        </Marker>
-                                    );
-                                }
-                                return null;
-                            })
-                        ) : (
-                            <Marker position={defaultCenter} />
-                            )}
-            </GoogleMap>
-        </LoadScript>
-    );
-};
+//         <GoogleMap mapContainerStyle={mapStyles} center={defaultCenter} zoom={2}>
+//                 {Array.isArray(cheeses) && cheeses.length > 0 ? (
+//                     cheeses.map((cheese) => {
+//                         if (cheese.countries && countriesCoordinates[cheese.countries]) {
+//                             const { lat, lng } = countriesCoordinates[cheese.countries];
+//                             return (
+//                                 <Marker
+//                                     key={cheese.id}
+//                                     position={{ lat, lng }}
+//                                     onClick={() => setSelectedCheese(cheese)}
+//                                     data-cy="cheese-marker"
+//                                 >
+//                                 {selectedCheese === cheese && (
+//                                         <InfoWindow onCloseClick={() => setSelectedCheese(null)}>
+//                                             <div data-cy="info">
+//                                                 <a data-cy ="link" href={`/cheeses/${cheese.cheeseId}`}>
+//                                                     {cheese.name}
+//                                                 </a>
+//                                             </div>
+//                                         </InfoWindow>
+//                                         )}
+//                                         </Marker>
+//                                     );
+//                                 }
+//                                 return null;
+//                             })
+//                         ) : (
+//                             <Marker position={defaultCenter} />
+//                             )}
+//             </GoogleMap>
+//         </LoadScript>
+//     );
+// };
 
 export default MapCheese;
