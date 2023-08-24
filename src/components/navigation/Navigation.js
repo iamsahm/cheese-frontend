@@ -25,6 +25,7 @@ const cheeseTypes = [
     "Semi-Hard",
     "Firm",
     "Semi-Firm",
+    "All",
 ]; // update this with the actual types we can search for
 
 const handleClick = () => {
@@ -103,7 +104,10 @@ const NavigationBar = () => {
                                 <MenuItem
                                     key={cheeseType}
                                     onClick={handleMenuClose}
-                                    style={{ width: "179px" }}
+
+                                    style={{width: '179px'}}
+                                    data-cy={`cheese-type-${cheeseType.toLowerCase()}`}
+
                                 >
                                     <Link
                                         to={`/cheeses/type/${cheeseType.toLowerCase()}`}
