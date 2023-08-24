@@ -6,6 +6,7 @@ import NavigationBar from "../navigation/Navigation";
 import MapCheese from '../mapCheese/MapCheese'
 import IndividualCheese from "../individualCheese/IndividualCheese";
 import CheeseList from "../cheeseList/CheeseList";
+import RecommendationComponent from '../recommendation/Recommendation';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
   useNavigate,
@@ -66,6 +67,10 @@ function App() {
                         element={<CheeseList />}
                     />
                     <Route path="/map" element={<MapCheese navigate={useNavigate()}/>} />
+                    <Route
+                        path="/recommendation"
+                        element={<RecommendationComponent />}
+                    />
                     </Routes>
             </ThemeProvider>
         </div>
