@@ -1,4 +1,3 @@
-// AIzaSyDO63pNSmcrrLnkmn97gP9tLOq_92ndezU
 import React ,{useState ,useEffect} from 'react';
 import { GoogleMap, Marker, InfoWindow, LoadScript } from '@react-google-maps/api';
 
@@ -46,25 +45,7 @@ const countriesCoordinates = {
     "Japa": { lat: 36.2048, lng: 138.2529 }
 
 };
-
-
-// const MapCheese = () => {
-//     const [cheeses, setCheeses] = useState([]);
-//     const [selectedCheese, setSelectedCheese] = useState(null);
-
-//     useEffect(() => {
-//         // Fetch cheese data from your backend API
-//         fetch(`/api/cheeses/all`)
-//         .then((response) => response.json())
-//         .then((data) => {
-//             setCheeses(data);
-//         });
-//     }, []);
-
-//     const mapStyles = {
-//         height: '500px',
-//         width: '90%',
-//     };   
+const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
 const MapCheese = () => {
     const [cheeses, setCheeses] = useState([]);
@@ -102,7 +83,7 @@ const MapCheese = () => {
         
         
         return (
-            <LoadScript googleMapsApiKey="AIzaSyDO63pNSmcrrLnkmn97gP9tLOq_92ndezU">
+            <LoadScript googleMapsApiKey={apiKey}>
                 <GoogleMap mapContainerStyle={{ width: '100%', height: '600px' }} center={{ lat: 0, lng: 0 }} zoom={2}>
                     {Object.keys(groupedCheeses).map((locationKey) => {
                     const [lat, lng] = locationKey.split('-').map(parseFloat);
