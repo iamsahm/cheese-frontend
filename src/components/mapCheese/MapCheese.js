@@ -92,7 +92,10 @@ const MapCheese = () => {
                             <div>
                                 {groupedCheeses[locationKey].map((cheese) => (
                                 <div key={cheese.id}>
-                                    <a href={`/cheeses/${cheese.cheeseId}`}>
+                                    <a 
+                                        href={`/cheeses/${cheese.cheeseId}`}
+                                        style={{position: 'relative',top: '-3px'}}
+                                    >
                                     {cheese.name}
                                     </a>
                                 </div>

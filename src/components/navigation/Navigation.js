@@ -120,8 +120,8 @@ const NavigationBar = () => {
                             ))}
                         </Menu>
                         <Button to="/map" color="inherit" component={Link}>
-                            <MapIcon style={{position: 'relative', top:'5px'}}/> 
-                            <span style={{position: 'relative', top: '-2px',left: '5px'}}>Cheese Map</span>
+                            <MapIcon style={{position: 'relative', top:'1px'}}/> 
+                            <span style={{position: 'relative', top: '1px',left: '5px'}}>Cheese Map</span>
                         </Button>
                         <Button
                             style={{
