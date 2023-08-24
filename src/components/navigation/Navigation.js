@@ -25,6 +25,7 @@ const cheeseTypes = [
     "Semi-Hard",
     "Firm",
     "Semi-Firm",
+    "All",
 ]; // update this with the actual types we can search for
 
 
