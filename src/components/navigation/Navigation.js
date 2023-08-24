@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Container from "@mui/material/Container";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,6 +11,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import logoIcon from './/../app/cheese.png';
 import StyledButton from '../app/styledButton';
+import MapIcon from '@mui/icons-material/Map';
 
 const currentURL = window.location.href;
 const targetPath = '/';
@@ -97,6 +98,11 @@ const NavigationBar = () => {
                                 </MenuItem>
                             ))}
                         </Menu>
+                        <Button to="/map" color="inherit" component={Link}>
+                            <MapIcon style={{position: 'relative', top:'5px'}}/> 
+                            <span style={{position: 'relative', top: '-2px',left: '5px'}}>Cheese Map</span>
+                        </Button>
+
                         <Button style={{display: token ?  "none" : "inline", marginRight: "10px"}} data-cy="signin" to="/" color="inherit" component={Link}>
                             <LoginIcon style={{position: 'relative', top:'5px'}}/> 
                             <span style={{position: 'relative', top: '-2px',left: '5px'}}>Sign In</span>
