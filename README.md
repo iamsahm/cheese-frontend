@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Brielievers Frontend application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application's MVP was built in a [2 week sprint] (https://trello.com/b/JjgnulJl/cheese-sommelier) as a final project of the Makers Academy fullstack development bootcamp.
+It was built by a team of 5 developers ([Hazel] (https://github.com/hash-smy), [Oli] (https://github.com/OliLoftus), [Rich] (https://github.com/rashworth7), [Sam] (https://github.com/iamsahm), [Charlotte] (https://github.com/charlottemothersole)) using AGILE methodologies.
 
-## Available Scripts
+## About the application
 
-In the project directory, you can run:
+The application is the frontend for a cheese sommelier app, which allows users to:
 
-### `npm start`
+-   Search for cheeses by type
+    -   Using the menu in the navbar to select a cheese type
+-   Get a random cheese
+    -   Each time a user visits the homepage a random cheese is displayed
+-   Rate cheeses
+    -   Users can rate cheeses out of 5 in the individual cheese pages
+-   Get recommendations based on their rating
+    -   User ratings are used to calculate a user preference and return a cheese that fits their highest rated preference but that they haven't yet rated
+-   See a map of cheeses by country
+    -   Users can see a map of the world with markers for cheeses and a link to the cheese page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+It has been built with React and styled using Material UI.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Running the app
 
-### `npm test`
+`deployment`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run the app locally following these steps:
 
-### `npm run build`
+```
+git clone https://github.com/iamsahm/cheese-frontend.git frontend
+cd frontend
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Folder Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Final project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   cheese_api
+-   cheese-frontend
 
-### `npm run eject`
+## Running tests
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The test facilities use jest and cypress. To run the tests, run the following commands:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm test
+```
